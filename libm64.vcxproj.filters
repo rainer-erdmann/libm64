@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="StaticLib.cpp">
+    <ClCompile Include="src\StaticLib.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
