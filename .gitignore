@@ -62,7 +62,8 @@ artifacts/
 *.pidb
 *.svclog
 *.scc
-
+*.tlog
+*.bsc
 
 # Visual C++ cache files
 ipch/
