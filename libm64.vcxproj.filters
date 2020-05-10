@@ -1,25 +1,120 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\StaticLib.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <Filter Include="src">
+      <UniqueIdentifier>{af7c3cd0-7e89-4644-8ec2-ab1f91f8b75a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ascii">
+      <UniqueIdentifier>{66aa0fb4-d68d-47c2-992b-9270e94bdf2d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\base">
+      <UniqueIdentifier>{09ae33e6-ea96-40cf-93d9-e5a45dbd1491}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\func">
+      <UniqueIdentifier>{2dce8227-54dd-4831-b7a2-a109209f2924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{8f167204-90e8-4ca5-bfc9-808f7076e036}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\base\f64__init.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\f64_const.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\f64_fmad.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\f64_nextafterd.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\f64_splitc.cpp">
+      <Filter>src\base</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <NASM Include="src\base\f64__initsupp.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_assign.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_cast.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_cmp.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_constd.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_copysign.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_fdim.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_fma.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_fpclass.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_frexp.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_ilogb.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_is_xy.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_ldexp.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_logb.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_modf.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_nextafter.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_poly.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_split.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_split87.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_truncd.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+    <NASM Include="src\base\f64_umul128.asm">
+      <Filter>src\base</Filter>
+    </NASM>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\libm64.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\libm64_int.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="src\intrin64.h">
+      <Filter>include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

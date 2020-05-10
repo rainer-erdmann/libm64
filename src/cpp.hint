@@ -1,0 +1,6 @@
+
+#define LOCAL static 
+#define PUBLIC 
+
+#define SFTYPE double
+

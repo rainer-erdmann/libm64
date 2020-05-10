@@ -1,0 +1,1 @@
+-Xvc -f win64 -o "tmp\x64\Release\f64__initsupp.obj" -l "tmp\x64\Release\f64__initsupp.lst" -t -I"src/" -D_M_X64  "F:\devstudio8\snmp01\libm64\src\base\f64__initsupp.asm" 

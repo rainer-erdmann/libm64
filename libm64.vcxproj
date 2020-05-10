@@ -19,10 +19,42 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\StaticLib.cpp" />
+    <None Include=".gitignore" />
   </ItemGroup>
   <ItemGroup>
-    <None Include=".gitignore" />
+    <ClCompile Include="src\base\f64_const.cpp" />
+    <ClCompile Include="src\base\f64_fmad.cpp" />
+    <ClCompile Include="src\base\f64_nextafterd.cpp" />
+    <ClCompile Include="src\base\f64_splitc.cpp" />
+    <ClCompile Include="src\base\f64__init.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <NASM Include="src\base\f64_assign.asm" />
+    <NASM Include="src\base\f64_cast.asm" />
+    <NASM Include="src\base\f64_cmp.asm" />
+    <NASM Include="src\base\f64_constd.asm" />
+    <NASM Include="src\base\f64_copysign.asm" />
+    <NASM Include="src\base\f64_fdim.asm" />
+    <NASM Include="src\base\f64_fma.asm" />
+    <NASM Include="src\base\f64_fpclass.asm" />
+    <NASM Include="src\base\f64_frexp.asm" />
+    <NASM Include="src\base\f64_ilogb.asm" />
+    <NASM Include="src\base\f64_is_xy.asm" />
+    <NASM Include="src\base\f64_ldexp.asm" />
+    <NASM Include="src\base\f64_logb.asm" />
+    <NASM Include="src\base\f64_modf.asm" />
+    <NASM Include="src\base\f64_nextafter.asm" />
+    <NASM Include="src\base\f64_poly.asm" />
+    <NASM Include="src\base\f64_split.asm" />
+    <NASM Include="src\base\f64_split87.asm" />
+    <NASM Include="src\base\f64_truncd.asm" />
+    <NASM Include="src\base\f64_umul128.asm" />
+    <NASM Include="src\base\f64__initsupp.asm" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\intrin64.h" />
+    <ClInclude Include="src\libm64.h" />
+    <ClInclude Include="src\libm64_int.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
@@ -89,11 +121,13 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>tmp\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>libm64</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <OutDir>bin\$(Platform)\$(Configuration)\</OutDir>
     <IntDir>tmp\$(Platform)\$(Configuration)\</IntDir>
+    <TargetName>libm64</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -169,6 +203,8 @@
       <FloatingPointModel>Fast</FloatingPointModel>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <BrowseInformation>true</BrowseInformation>
+      <AdditionalIncludeDirectories>..\</AdditionalIncludeDirectories>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -176,6 +212,15 @@
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
+    <NASM>
+      <PreprocessorDefinitions>_M_X64</PreprocessorDefinitions>
+      <ListFileName>$(IntDir)%(FileName).lst</ListFileName>
+      <TASMcompat>true</TASMcompat>
+      <IncludePaths>src</IncludePaths>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <PreIncludeFiles>
+      </PreIncludeFiles>
+    </NASM>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

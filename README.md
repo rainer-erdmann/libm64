@@ -1,7 +1,7 @@
 # Libm64
 
 
-[Libm64] is today only a testproject to learn to work with github. 
+[Libm64] is a work in progress project around double precision math.
 
 ## Platform support
 

@@ -1,0 +1,133 @@
+	.nolist	
+;
+;	FILENAME :        common.masm          
+;
+;	DESCRIPTION :
+;		common include header 
+;		MASM specific
+;
+;	AUTHOR :    Rainer Erdmann
+;
+;	Copyright 2016-2019 Rainer Erdmann
+;
+;	License: see accompanying file license.txt
+;
+;	CHANGES :
+;
+;	REF NO  VERSION DATE		WHO			DETAIL
+;
+
+;
+;	it is not the easiest job to get a simple 
+;	assembly source running on more than 
+;	one assembler.
+;	we tried to get our small set of sources
+;	running on MASM and NASM both in 
+;	x86 (32bit) and x64 (64bit) mode
+;
+
+	IFDEF @Version						; IDENTIFY MASM
+
+	; function names / mangling
+
+ENTRY MACRO NAME, TYP
+	IFDEF FUNC
+		FUNC ENDP
+	ENDIF
+
+	align 16
+	IFNB <TYP>									 
+		FUNC TEXTEQU <?&NAME&@@&TYP&>			; ms cpp mangled name
+	ELSE
+		IFNDEF _M_X64
+			FUNC TEXTEQU <_&NAME>					; ms extern "C" name x86
+		ELSE
+			FUNC TEXTEQU <&NAME>					; ms extern "C" name x64
+		ENDIF
+	ENDIF
+	public FUNC 
+FUNC PROC
+; MNAME: 
+	ENDM
+
+	IMPORT MACRO NAME, ENAME, TYP
+	IFNB <TYP>
+		EXTRN ENAME :TYP
+	ELSE
+		EXTRN ENAME :FAR
+    ENDIF
+	NAME EQU ENAME
+	ENDM
+
+	SCW EQU 0
+
+	SAVECW MACRO A, B
+	IF SCW EQ 1
+	fnstcw	word ptr [A]
+	fnstcw	word ptr [B]
+	or		word ptr [A], 0300h	; set prec to 64bit
+	fldcw	word ptr [A]
+    ENDIF
+	ENDM
+
+	RESTCW MACRO B
+	IF SCW EQ 1
+	fldcw	word ptr [B]
+	ENDIF
+	ENDM
+
+_Y  TEXTEQU <ymmword ptr>
+_X  TEXTEQU <xmmword ptr>
+_Q	TEXTEQU <qword ptr>
+_QM	TEXTEQU <qword ptr>
+_D	TEXTEQU <dword ptr>
+_W	TEXTEQU <word ptr>
+_B	TEXTEQU <byte ptr>
+_T	TEXTEQU <tbyte ptr>
+
+
+SECTION TEXTEQU <>
+
+;#define TEXTEQU DEFINE					; geht
+
+;#ifdef TEXTEQU <IFDEF>
+
+COMMENT /
+older versions of MASM have a bug in X64:
+movq <gp>, XMM and friends are not recognized
+giving error A2150, should use movd instead
+Version 14.00.24210.0
+works correct with Version 14.12.25835.0
+/
+
+	IF @Version LT 1410					; sowas geht
+	MOV_Q MACRO A, B					
+	movd A, B
+	ENDM
+	ELSE
+	MOV_Q MACRO A, B
+	movq A, B
+	ENDM
+	ENDIF
+
+	IFDEF _M_X64
+;	x64 only
+	SPACE EQU rsp+8
+	ELSE
+;	x86 only
+	ARGS EQU esp+4
+	ENDIF
+
+	IFNDEF _M_X64
+;	x86 only
+	.model flat
+	ENDIF
+
+
+	ENDIF								; END OF MASM SPECIFIC 
+
+OPTION DOTNAME							; allow dotted names
+
+; OPTION NOKEYWORD movq					; is possible
+	.list
+;	.listmacroall
